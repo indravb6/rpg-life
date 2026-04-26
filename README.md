@@ -1,5 +1,9 @@
 # RPG-Life
 
+<p align="center">
+  <img src="logo.png" alt="Logo" width="180" />
+</p>
+
 A gamified life exploration platform where users complete curated real-world challenges to gain experience and level up. Instead of creating their own tasks, users are guided through meaningful activities—ranging from social interactions to personal growth experiences—designed to push them out of their routine. With integrated social features like a public timeline, followers, and interactions, users can share their journey, stay motivated, and discover new ways to level up their lives.
 
 ## 🌟 Motivation
@@ -14,7 +18,7 @@ For additional details about the project, please refer to the [Project Documenta
 - Backend: NestJS
 - Database: PostgreSQL
 
-## 🤝 Contributing
+## 🤝 Contributing!
 
 Contributions are welcome! Please open an issue or submit a pull request.
 

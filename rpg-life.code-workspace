@@ -1,14 +1,23 @@
 {
   "folders": [
     {
-      "path": "client"
+      "path": "web"
     },
     {
       "path": "service"
     },
     { "path": ".", "name": "root" }
   ],
-  "settings": { "editor.formatOnSave": true },
+  "settings": {
+    "editor.formatOnSave": true,
+    "typescript.preferences.organizeImports": {
+      "typeOrder": "auto"
+    },
+    "editor.codeActionsOnSave": {
+      "source.removeUnusedImports": "always",
+      "source.sortImports": "always"
+    }
+  },
   "extensions": {
     "recommendations": []
   }
