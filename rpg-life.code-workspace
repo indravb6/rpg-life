@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "path": "client"
+    },
+    {
+      "path": "service"
+    },
+    { "path": ".", "name": "root" }
+  ],
+  "settings": { "editor.formatOnSave": true },
+  "extensions": {
+    "recommendations": []
+  }
+}
