@@ -14,7 +14,7 @@
       "typeOrder": "auto"
     },
     "editor.codeActionsOnSave": {
-      "source.removeUnusedImports": "always",
+      "source.removeUnusedImports": "explicit",
       "source.sortImports": "always"
     }
   },

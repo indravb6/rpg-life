@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
+import { SnakeNamingStrategy } from "typeorm-naming-strategies";
+import { User } from "./services/user/user.entity";
 
-console.log(process.env.DB_HOST);
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.DB_HOST,
@@ -10,7 +11,8 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: [User],
   subscribers: [],
   migrations: [],
+  namingStrategy: new SnakeNamingStrategy(),
 });

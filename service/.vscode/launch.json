@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Nest App",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:dev"],
+      "autoAttachChildProcesses": true,
+      "console": "integratedTerminal",
+      "restart": true,
+      "sourceMaps": true
+    }
+  ]
+}
