@@ -1,7 +1,10 @@
-# RPG-Life
-
 <p align="center">
   <img src="logo.png" alt="Logo" width="180" />
+</p>
+
+<p align="center">
+<a href="https://github.com/indravb6/rpg-life/blob/master/LICENSE" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://rpg-life-dev.netlify.app/" target="_blank"><img src="https://api.netlify.com/api/v1/badges/06244072-66f1-4c2b-b028-2dded4c54ef6/deploy-status" alt="Netlify Status" /></a>
 </p>
 
 A gamified life exploration platform where users complete curated real-world challenges to gain experience and level up. Instead of creating their own tasks, users are guided through meaningful activities—ranging from social interactions to personal growth experiences—designed to push them out of their routine. With integrated social features like a public timeline, followers, and interactions, users can share their journey, stay motivated, and discover new ways to level up their lives.
