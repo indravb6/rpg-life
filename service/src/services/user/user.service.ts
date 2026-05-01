@@ -46,7 +46,6 @@ export class UserService {
     const userInfo: UserInfoResponse = {
       username: user.username,
       email: user.email,
-      fullName: user.fullName,
     };
     return userInfo;
   }

@@ -4,7 +4,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Nest App",
+      "name": "Debug Service",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start:dev"],
       "autoAttachChildProcesses": true,

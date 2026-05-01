@@ -15,11 +15,6 @@ export class CreateUserRequest {
   @IsEmail()
   @ApiProperty({ example: "andi@gmail.com" })
   email: string;
-
-  @IsNotEmpty()
-  @Length(3, 50)
-  @ApiProperty({ example: "Andi" })
-  fullName: string;
 }
 
 export class LoginRequest {
@@ -35,7 +30,6 @@ export class LoginRequest {
 export class UserInfoResponse {
   username: string;
   email: string;
-  fullName: string;
 }
 
 export class CredentialResponse {

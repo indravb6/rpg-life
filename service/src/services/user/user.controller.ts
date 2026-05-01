@@ -1,12 +1,13 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { Authorization } from "../../common/authorization";
+import { Body, Controller, Get, Post, Res, UseGuards } from "@nestjs/common";
+import { ApiOperation } from "@nestjs/swagger";
+import type { Response } from "express";
 import { Auth } from "../../common/model/auth.model";
 import { Message } from "../../common/model/message.model";
-import { CreateUserRequest, CredentialResponse, LoginRequest, UserInfoResponse } from "./user.model";
+import { JwtAuthGuard, User } from "../auth/guard";
+import { CreateUserRequest, LoginRequest, UserInfoResponse } from "./user.model";
 import { UserService } from "./user.service";
 
-@Controller("user")
+@Controller("users")
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -20,14 +21,16 @@ export class UserController {
 
   @Post("/login")
   @ApiOperation({ summary: "Login a user" })
-  async login(@Body() request: LoginRequest): Promise<CredentialResponse> {
-    return await this.userService.login(request.username, request.password);
+  async login(@Body() request: LoginRequest, @Res({ passthrough: true }) res: Response): Promise<Message> {
+    const { token } = await this.userService.login(request.username, request.password);
+    res.cookie("token", token, { httpOnly: true, secure: false, sameSite: "lax" });
+    return { message: "Login successful" };
   }
 
-  @Post("/info")
+  @Get("/info")
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: "Get user information" })
-  @ApiBearerAuth()
-  async getUserInfo(@Authorization() { username }: Auth): Promise<UserInfoResponse> {
+  async getUserInfo(@User() { username }: Auth): Promise<UserInfoResponse> {
     return await this.userService.getUserInfo(username);
   }
 }
