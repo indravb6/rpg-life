@@ -6,7 +6,7 @@ export default function LoginWrapper({ children }: { children: ReactNode }) {
     <Box sx={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <Box>
         <img
-          src="bg.jpg"
+          src="images/bg.jpg"
           alt="Background"
           style={{
             width: "60vw",
@@ -27,7 +27,7 @@ export default function LoginWrapper({ children }: { children: ReactNode }) {
           width: "40vw",
         }}
       >
-        <img src="logo.png" alt="Logo" style={{ width: "200px", height: "auto" }} />
+        <img src="images/logo.png" alt="Logo" style={{ width: "200px", height: "auto" }} />
         {children}
       </Box>
     </Box>

@@ -6,9 +6,11 @@ const userAPI = {
     return postRequest("/users/register", data);
   },
   login: async (data: LoginRequest) => {
-    await postRequest("/users/login", data);
+    await postRequest("/auth/login", data);
   },
-
+  logout: async () => {
+    await postRequest("/auth/logout", {});
+  },
   getUserInfo: async () => {
     const userInfo = await getRequest("/users/info");
     return userInfo;

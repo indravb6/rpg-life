@@ -2,9 +2,8 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import bcrypt from "bcrypt";
 import { Repository } from "typeorm";
-import { generateJWT } from "../../common/authorization";
 import { User } from "./user.entity";
-import { CreateUserRequest, CredentialResponse, UserInfoResponse } from "./user.model";
+import { CreateUserRequest, UserInfoResponse } from "./user.model";
 
 @Injectable()
 export class UserService {
@@ -19,21 +18,6 @@ export class UserService {
     });
 
     return await this.userRepository.save(newUser);
-  }
-
-  async login(username: string, password: string): Promise<CredentialResponse> {
-    const user = await this.userRepository.findOne({
-      select: ["username", "password"],
-      where: { username },
-    });
-    if (!user || !bcrypt.compareSync(password, user.password)) {
-      throw new BadRequestException("Wrong username or password");
-    }
-    const credential: CredentialResponse = {
-      token: generateJWT(user.username),
-    };
-
-    return credential;
   }
 
   async getUserInfo(username: string): Promise<UserInfoResponse> {

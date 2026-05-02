@@ -17,16 +17,6 @@ export class CreateUserRequest {
   email: string;
 }
 
-export class LoginRequest {
-  @IsNotEmpty()
-  @ApiProperty({ example: "andi" })
-  username: string;
-
-  @IsNotEmpty()
-  @ApiProperty({ example: "password123" })
-  password: string;
-}
-
 export class UserInfoResponse {
   username: string;
   email: string;

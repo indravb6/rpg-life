@@ -1,11 +1,14 @@
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
-import { BaseLayout } from "./base";
+import { BaseStyling } from "./base";
 import "./globals.css";
+import theme from "./theme";
 
 export const metadata: Metadata = {
   title: "RPG Life",
   icons: {
-    icon: "/rpg-life.ico",
+    icon: "/images/rpg-life.ico",
   },
 };
 
@@ -16,7 +19,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body>
-        <BaseLayout>{children}</BaseLayout>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <BaseStyling>{children}</BaseStyling>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

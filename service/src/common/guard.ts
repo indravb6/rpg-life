@@ -1,5 +1,5 @@
 import { CanActivate, createParamDecorator, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
-import { AuthService } from "./auth.service";
+import { AuthService } from "../services/auth/auth.service";
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -20,6 +20,6 @@ export class JwtAuthGuard implements CanActivate {
   }
 }
 
-export const User = createParamDecorator((_: unknown, ctx: ExecutionContext) => {
+export const Authorization = createParamDecorator((_: unknown, ctx: ExecutionContext) => {
   return ctx.switchToHttp().getRequest().user;
 });
