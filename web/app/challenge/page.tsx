@@ -1,5 +1,5 @@
-import HomeView from "../../features/home/HomeView";
+import { redirect } from "next/navigation";
 
 export default function ChallengePage() {
-  return <HomeView />;
+  redirect("/challenge/category");
 }

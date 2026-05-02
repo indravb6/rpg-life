@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 import { AuthModule } from "./services/auth/auth.module";
+import { ChallengeModule } from "./services/challenge/challenge.module";
 import { UserModule } from "./services/user/user.module";
 
 @Module({
@@ -28,6 +29,7 @@ import { UserModule } from "./services/user/user.module";
     }),
     AuthModule,
     UserModule,
+    ChallengeModule,
   ],
 })
 export class AppModule {}

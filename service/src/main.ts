@@ -26,6 +26,8 @@ async function run() {
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({ credentials: true, origin: config.get<string>("CORS_ORIGIN") });
 
+  // seed(app.get(DataSource));
+
   setupSwagger(app);
 
   const port = config.get<number>("PORT") || 3000;

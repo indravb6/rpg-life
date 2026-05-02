@@ -6,7 +6,7 @@ import { Request } from "express";
 import * as jwt from "jsonwebtoken";
 import { Repository } from "typeorm";
 import { Auth } from "../../common/model/auth.model";
-import { User } from "../user/user.entity";
+import { User } from "../user/entities/user.entity";
 import { CredentialResponse } from "../user/user.model";
 
 @Injectable()

@@ -48,7 +48,7 @@ export default function SideBar() {
   };
 
   const renderMenuItem = (icon: ReactNode, label: string, path: string) => {
-    const isActive = pathname === path;
+    const isActive = pathname.startsWith(path);
 
     return (
       <MenuList key={label} active={isActive} onClick={() => (window.location.href = path)}>
@@ -70,13 +70,13 @@ export default function SideBar() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        height: "100%",
+        height: "100vh",
         paddingY: "32px",
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <Box>
-          <img src="images/logo.png" alt="logo" width={100} height={100} />
+          <img src="/images/logo.png" alt="logo" width={100} height={100} />
         </Box>
         {renderMenuItems()}
       </Box>

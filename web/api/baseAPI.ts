@@ -8,6 +8,7 @@ export async function postRequest(endpoint: string, data: any) {
     },
     credentials: "include",
     body: JSON.stringify(data),
+    cache: "no-cache",
   });
 
   if (!response.ok) {
@@ -17,13 +18,15 @@ export async function postRequest(endpoint: string, data: any) {
   return await response.json();
 }
 
-export async function getRequest(endpoint: string) {
+export async function getRequest(endpoint: string, headers?: any) {
   const response = await fetch(`${API_URL}${endpoint}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      ...headers,
     },
     credentials: "include",
+    cache: "no-cache",
   });
 
   if (!response.ok) {
