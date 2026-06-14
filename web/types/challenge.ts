@@ -15,3 +15,8 @@ export interface Challenge {
   talentPoint: number | null;
   intellectPoint: number | null;
 }
+
+export interface ChallengeSubmissionRequest {
+  challengeId: string;
+  comment: string;
+}

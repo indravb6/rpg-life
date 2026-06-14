@@ -1,4 +1,4 @@
-import { IsString } from "class-validator";
+import { IsString, MaxLength, MinLength } from "class-validator";
 
 export class CategoryResponse {
   id: string;
@@ -21,4 +21,14 @@ export class ChallengeResponse {
 export class GetChallengesQueryParam {
   @IsString()
   category: string;
+}
+
+export class ChallengeSubmissionRequest {
+  @IsString()
+  challengeId: string;
+
+  @IsString()
+  @MaxLength(250)
+  @MinLength(10)
+  comment: string;
 }

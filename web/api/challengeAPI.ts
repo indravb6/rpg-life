@@ -1,5 +1,5 @@
-import { Category, Challenge } from "../types/challenge";
-import { getRequest } from "./baseAPI";
+import { Category, Challenge, ChallengeSubmissionRequest } from "../types/challenge";
+import { getRequest, postRequest } from "./baseAPI";
 
 const challengeAPI = {
   getCategories: async (cookieHeader?: string): Promise<Category[]> => {
@@ -7,6 +7,14 @@ const challengeAPI = {
   },
   getChallenges: async (categoryTitle: string, cookieHeader?: string): Promise<Challenge[]> => {
     return getRequest(`/challenges?category=${categoryTitle}`, { Cookie: cookieHeader });
+  },
+  submitChallenge: async (
+    challengeSubmissionRequest: ChallengeSubmissionRequest,
+    cookieHeader?: string,
+  ) => {
+    return postRequest("/challenges/submissions", challengeSubmissionRequest, {
+      Cookie: cookieHeader,
+    });
   },
 };
 

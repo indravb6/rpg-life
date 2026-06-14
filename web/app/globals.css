@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
 body {
-  font-family: 'Pixelify Sans', sans-serif;
+  font-family: "Jersey 15", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-style: normal;
 }

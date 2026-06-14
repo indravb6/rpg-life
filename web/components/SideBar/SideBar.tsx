@@ -23,10 +23,18 @@ const MenuList = styled(Box, {
 }));
 
 const menus = [
-  { icon: <HomeIcon />, label: "Home", path: "/home" },
-  { icon: <AutoAwesomeIcon />, label: "Challenge", path: "/challenge" },
-  { icon: <Diversity1Icon />, label: "Friends", path: "/friends" },
-  { icon: <PersonIcon />, label: "Profile", path: "/profile" },
+  { icon: <HomeIcon sx={{ imageRendering: "pixelated" }} />, label: "Home", path: "/home" },
+  {
+    icon: <AutoAwesomeIcon sx={{ imageRendering: "pixelated" }} />,
+    label: "Challenge",
+    path: "/challenge",
+  },
+  {
+    icon: <Diversity1Icon sx={{ imageRendering: "pixelated" }} />,
+    label: "Friends",
+    path: "/friends",
+  },
+  { icon: <PersonIcon sx={{ imageRendering: "pixelated" }} />, label: "Profile", path: "/profile" },
 ];
 
 export default function SideBar() {

@@ -2,25 +2,25 @@
   "folders": [
     {
       "path": "web",
-      "name": "web"
+      "name": "web",
     },
     {
       "path": "service",
-      "name": "service"
+      "name": "service",
     },
-    { "path": ".", "name": "root" }
+    { "path": ".", "name": "root" },
   ],
   "settings": {
     "editor.formatOnSave": true,
-    "typescript.preferences.organizeImports": {
-      "typeOrder": "auto"
+    "js/ts.preferences.organizeImports": {
+      "typeOrder": "auto",
     },
     "editor.codeActionsOnSave": {
       "source.removeUnusedImports": "explicit",
-      "source.sortImports": "always"
-    }
+      "source.sortImports": "always",
+    },
   },
   "extensions": {
-    "recommendations": []
-  }
+    "recommendations": [],
+  },
 }

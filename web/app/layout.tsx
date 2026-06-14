@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
+import ToastProvider from "../providers/ToastProvider/ToastProvider";
 import { BaseStyling } from "./base";
 import "./globals.css";
 import theme from "./theme";
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <BaseStyling>{children}</BaseStyling>
+            <BaseStyling>
+              <ToastProvider>{children}</ToastProvider>
+            </BaseStyling>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

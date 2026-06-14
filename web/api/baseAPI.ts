@@ -1,10 +1,13 @@
+import { useToast } from "../providers/ToastProvider/ToastProvider";
+
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function postRequest(endpoint: string, data: any) {
+export async function postRequest(endpoint: string, data: any, headers?: any) {
   const response = await fetch(`${API_URL}${endpoint}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...headers,
     },
     credentials: "include",
     body: JSON.stringify(data),
@@ -12,6 +15,9 @@ export async function postRequest(endpoint: string, data: any) {
   });
 
   if (!response.ok) {
+    useToast
+      .getState()
+      .showToast("error", `Failed to get from ${endpoint}: ${response.statusText}`);
     throw new Error(`Failed to post to ${endpoint}: ${response.statusText}`);
   }
 

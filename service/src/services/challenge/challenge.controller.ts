@@ -1,7 +1,8 @@
-import { Controller, Get, Query, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Query, UseGuards } from "@nestjs/common";
 import { ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../common/guard";
-import { GetChallengesQueryParam } from "./challenge.model";
+import { Authorization, JwtAuthGuard } from "../../common/guard";
+import { Auth } from "../../common/model/auth.model";
+import { ChallengeSubmissionRequest, GetChallengesQueryParam } from "./challenge.model";
 import { ChallengeService } from "./challenge.service";
 
 @Controller("/challenges")
@@ -19,5 +20,14 @@ export class ChallengeController {
   @ApiOperation({ summary: "Get challenges" })
   async getChallenges(@Query() { category }: GetChallengesQueryParam) {
     return await this.challengeService.getChallenges(category);
+  }
+
+  @Post("/submissions")
+  @ApiOperation({ summary: "Submit challenge" })
+  async submitChallenge(
+    @Authorization() { username }: Auth,
+    @Body() challengeSubmissionRequest: ChallengeSubmissionRequest,
+  ) {
+    return await this.challengeService.submitChallenge(challengeSubmissionRequest, username);
   }
 }

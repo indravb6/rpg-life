@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { BaseEntity } from "../../../common/entity/base.entity";
 import { ChallengeSubmission } from "../../challenge/entities/challenge-submission.entity";
 import { User } from "./user.entity";
@@ -6,6 +6,7 @@ import { User } from "./user.entity";
 @Entity()
 export class Profile extends BaseEntity {
   @OneToOne((type) => User, (user) => user.profile)
+  @JoinColumn()
   user: User;
 
   @Column({ type: "smallint" })

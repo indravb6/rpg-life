@@ -4,6 +4,8 @@ import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import cookieParser from "cookie-parser";
 import { AppModule } from "./app.module";
+import { GlobalExceptionFilter } from "./common/middleware/GlobalExceptionFilter";
+import { LoggingInterceptor } from "./common/middleware/LoggingInterceptor";
 import { ValidationPipe } from "./common/middleware/validation.pipe";
 
 function setupSwagger(app: INestApplication) {
@@ -24,6 +26,8 @@ async function run() {
 
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalInterceptors(new LoggingInterceptor());
+  app.useGlobalFilters(new GlobalExceptionFilter());
   app.enableCors({ credentials: true, origin: config.get<string>("CORS_ORIGIN") });
 
   // seed(app.get(DataSource));

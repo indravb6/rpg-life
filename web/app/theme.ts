@@ -3,8 +3,10 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Pixelify Sans, sans-serif",
+    fontFamily: '"Jersey 15", sans-serif',
     button: {
+      fontFamily: '"Jersey 15", sans-serif',
+      letterSpacing: "1px",
       textTransform: "none",
     },
   },
