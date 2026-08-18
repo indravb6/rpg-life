@@ -12,3 +12,18 @@ export interface LoginRequest {
 export interface LoginResponse {
   token: string;
 }
+
+export interface UserInfo {
+  username: string;
+  email: string;
+  currentStreak: number;
+  level: number;
+  exp: number;
+  maxExp: number;
+  strengthPoint: number;
+  culturePoint: number;
+  environmentPoint: number;
+  charismaPoint: number;
+  talentPoint: number;
+  intellectPoint: number;
+}
