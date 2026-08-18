@@ -20,6 +20,16 @@ export class CreateUserRequest {
 export class UserInfoResponse {
   username: string;
   email: string;
+  currentStreak: number;
+  level: number;
+  exp: number;
+  maxExp: number;
+  strengthPoint: number;
+  culturePoint: number;
+  environmentPoint: number;
+  charismaPoint: number;
+  talentPoint: number;
+  intellectPoint: number;
 }
 
 export class CredentialResponse {
