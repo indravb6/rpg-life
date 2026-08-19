@@ -23,7 +23,7 @@ export default function ProfileHeader({ user }: ProfileHeaderProps) {
       >
         <Box sx={{ width: 120, height: 120, border: "2px solid #4FC3F7", overflow: "hidden", flexShrink: 0 }}>
           <img
-            src="/logo.png"
+            src="/images/logo.png"
             alt="Profile"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
@@ -56,22 +56,6 @@ export default function ProfileHeader({ user }: ProfileHeaderProps) {
                   backgroundColor: "#27C8F3",
                 }}
               />
-              <Typography
-                sx={{
-                  position: "absolute",
-                  left: 10,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  fontFamily: "monospace",
-                  fontSize: 18,
-                  color: "#111",
-                  fontWeight: 700,
-                  letterSpacing: 1,
-                }}
-              >
-                XP {progress}%
-              </Typography>
-
               <Typography
                 sx={{
                   position: "absolute",

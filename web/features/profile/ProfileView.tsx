@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import userAPI from "../../api/userAPI";
 import { UserInfo } from "../../types/user";
@@ -10,6 +10,7 @@ import ProfileTabs from "./ProfileTabs";
 
 export default function ProfileView() {
   const [user, setUser] = useState<UserInfo | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     userAPI
@@ -20,8 +21,20 @@ export default function ProfileView() {
       })
       .catch((err) => {
         console.error("ERROR:", err);
+        setError(true);
       });
   }, []);
+
+  if (error) {
+    return (
+      <Box sx={{ mt: 3 }}>
+        <Typography>Failed to load profile data</Typography>
+        <Button variant="contained" onClick={() => window.location.reload()}>
+          Retry
+        </Button>
+      </Box>
+    );
+  }
 
   if (!user) {
     return <div>Loading...</div>;
