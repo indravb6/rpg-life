@@ -18,16 +18,12 @@ export default function ProfileStats({ user }: ProfileStatsProps) {
   ];
 
   const history = [
-    { title: "XP earned", value: "210 XP", color: "#2CCBFF" },
-    { title: "Average XP per day", value: "210 XP", color: "#2CCBFF" },
-    { title: "Achievements completed", value: "3", color: "#3EE46A" },
-    { title: "Avg. completed per day", value: "3.0", color: "#3EE46A" },
-    { title: "Unique achievements", value: "3", color: "#3EE46A" },
-    {
-      title: "Leveling up since",
-      value: "2026-06-25 (0 days ago)",
-      color: "#3EE46A",
-    },
+    { title: "XP earned", value: "0 XP", color: "#2CCBFF" },
+    { title: "Average XP per day", value: "0 XP", color: "#2CCBFF" },
+    { title: "Achievements completed", value: "0", color: "#3EE46A" },
+    { title: "Avg. completed per day", value: "0.0", color: "#3EE46A" },
+    { title: "Unique achievements", value: "0", color: "#3EE46A" },
+    { title: "Leveling up since", value: "YYYY-MM-DD (0 days ago)", color: "#3EE46A",},
     { title: "High Scores rank", value: "#0", color: "#2CCBFF" },
   ];
 
