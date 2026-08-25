@@ -1,5 +1,10 @@
-import HomeView from "../../features/home/HomeView";
+import PageWrapper from "../../components/PageWrapper/PageWrapper";
+import ProfileView from "../../features/profile/ProfileView";
 
 export default function ProfilePage() {
-  return <HomeView />;
+  return (
+    <PageWrapper>
+      <ProfileView />
+    </PageWrapper>
+  );
 }
