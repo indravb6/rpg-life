@@ -2,7 +2,7 @@
 
 import userAPI from "@/api/userAPI";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert, Box, Button, Snackbar, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -64,15 +64,6 @@ export default function LoginForm() {
           Register
         </Link>
       </Typography>
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        open={true}
-        onClose={() => {}}
-      >
-        <Alert onClose={() => {}} severity="error" variant="filled" sx={{ width: "100%" }}>
-          Wrong username or password
-        </Alert>
-      </Snackbar>
     </>
   );
 }

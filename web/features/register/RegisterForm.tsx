@@ -2,40 +2,34 @@
 
 import { Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import userAPI from "../../api/userAPI";
+import { useToast } from "../../providers/ToastProvider/ToastProvider";
 
 export default function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
+  const showToast = useToast((s) => s.showToast);
+  const router = useRouter();
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      showToast("error", "Passwords do not match");
       return;
     }
 
-    userAPI
-      .register({ email, password, username })
-      .then(() => {
-        alert("Registration successful");
-      })
-      .catch((error) => {
-        alert("Registration failed: " + error);
-        console.error(error);
-      });
+    userAPI.register({ email, password, username }).then(() => {
+      showToast("success", "Registration successful");
+      router.push("/login");
+    });
   };
 
   return (
     <>
-      <TextField
-        variant="outlined"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <TextField variant="outlined" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <TextField
         placeholder="Username"
         variant="outlined"

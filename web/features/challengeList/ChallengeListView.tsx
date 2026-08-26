@@ -2,16 +2,7 @@
 
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import {
-  Box,
-  Button,
-  IconButton,
-  styled,
-  TextField,
-  Tooltip,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, IconButton, styled, TextField, Tooltip, Typography, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import challengeAPI from "../../api/challengeAPI";
@@ -52,11 +43,7 @@ export default function ChallengeListView({ challenges, categoryTitle }: Challen
   const renderSubmissionBox = () => {
     return (
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <TextField
-          placeholder="Add your comment"
-          onChange={(e) => setComment(e.target.value)}
-          autoComplete="off"
-        />
+        <TextField placeholder="Add your comment" onChange={(e) => setComment(e.target.value)} autoComplete="off" />
         <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}>
           <Button color="error" onClick={() => setChallengeId(null)}>
             Cancel
@@ -99,9 +86,7 @@ export default function ChallengeListView({ challenges, categoryTitle }: Challen
             {challenges.map((challenge) => (
               <ChallengeList key={challenge.id}>
                 <Typography>{challenge.title}</Typography>
-                <Box
-                  sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
-                >
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <Tooltip title="Complete this challenge">
                     <IconButton>
                       <PostAddIcon

@@ -22,16 +22,20 @@ export default function ProfileHeader({ user }: ProfileHeaderProps) {
         }}
       >
         <Box sx={{ width: 120, height: 120, border: "2px solid #4FC3F7", overflow: "hidden", flexShrink: 0 }}>
-          <img
-            src="/images/logo.png"
-            alt="Profile"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+          <img src="/images/logo.png" alt="Profile" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </Box>
 
         <Box sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-
-          <Typography sx={{ fontFamily: "monospace", fontSize: 42, fontWeight: 700, color: "#B8FFF2", letterSpacing: 1, lineHeight: 1 }}>
+          <Typography
+            sx={{
+              fontFamily: "monospace",
+              fontSize: 42,
+              fontWeight: 700,
+              color: "#B8FFF2",
+              letterSpacing: 1,
+              lineHeight: 1,
+            }}
+          >
             {user.username}
           </Typography>
 

@@ -2,20 +2,35 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import bcrypt from "bcrypt";
 import { Repository } from "typeorm";
+import { ChallengeSubmission } from "../challenge/entities/challenge-submission.entity";
 import { Profile } from "./entities/profile.entity";
 import { User } from "./entities/user.entity";
 import { CreateUserRequest, UserInfoResponse } from "./user.model";
-import { ChallengeSubmission } from "../challenge/entities/challenge-submission.entity";
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     @InjectRepository(Profile) private readonly profileRepository: Repository<Profile>,
-    @InjectRepository(ChallengeSubmission) private readonly challengeSubmissionRepository: Repository<ChallengeSubmission>,
+    @InjectRepository(ChallengeSubmission)
+    private readonly challengeSubmissionRepository: Repository<ChallengeSubmission>,
   ) {}
 
+  async validateRegisterUser(request: CreateUserRequest): Promise<void> {
+    const existingUser = await this.userRepository.findOne({ where: { username: request.username } });
+    if (existingUser) {
+      throw new BadRequestException("Username already exists");
+    }
+
+    const existingEmail = await this.userRepository.findOne({ where: { email: request.email } });
+    if (existingEmail) {
+      throw new BadRequestException("Email already exists");
+    }
+  }
+
   async registerUser(request: CreateUserRequest): Promise<User> {
+    await this.validateRegisterUser(request);
+
     const hashPassword = bcrypt.hashSync(request.password, 10);
 
     const newUser = this.userRepository.create({
@@ -51,10 +66,8 @@ export class UserService {
     }
     return profile;
   }
-  
-  private calculateCurrentStreak(
-    submissions: ChallengeSubmission[],
-  ): number {
+
+  private calculateCurrentStreak(submissions: ChallengeSubmission[]): number {
     return 0;
   }
 
@@ -65,20 +78,20 @@ export class UserService {
     if (!user) {
       throw new BadRequestException("User not found");
     }
-  const profile = await this.getProfileByUsername(username);
+    const profile = await this.getProfileByUsername(username);
 
-  const submissions = await this.challengeSubmissionRepository.find({
-    where: {
-      profile: {
-        id: profile.id,
+    const submissions = await this.challengeSubmissionRepository.find({
+      where: {
+        profile: {
+          id: profile.id,
+        },
       },
-    },
-    order: {
-      createdDate: "DESC",
-    },
-  });
+      order: {
+        createdDate: "DESC",
+      },
+    });
 
-  const currentStreak = this.calculateCurrentStreak(submissions);
+    const currentStreak = this.calculateCurrentStreak(submissions);
     const userInfo: UserInfoResponse = {
       username: user.username,
       email: user.email,

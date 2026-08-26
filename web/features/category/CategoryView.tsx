@@ -23,10 +23,7 @@ export default function CategoryView({ categories }: CategoryViewProps) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
       {categories.map((category) => (
-        <CategoryList
-          key={category.id}
-          onClick={() => router.push(`/challenge/category/${category.title}`)}
-        >
+        <CategoryList key={category.id} onClick={() => router.push(`/challenge/category/${category.title}`)}>
           {category.title}
         </CategoryList>
       ))}

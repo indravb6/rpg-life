@@ -23,7 +23,7 @@ export default function ProfileStats({ user }: ProfileStatsProps) {
     { title: "Achievements completed", value: "0", color: "#3EE46A" },
     { title: "Avg. completed per day", value: "0.0", color: "#3EE46A" },
     { title: "Unique achievements", value: "0", color: "#3EE46A" },
-    { title: "Leveling up since", value: "YYYY-MM-DD (0 days ago)", color: "#3EE46A",},
+    { title: "Leveling up since", value: "YYYY-MM-DD (0 days ago)", color: "#3EE46A" },
     { title: "High Scores rank", value: "#0", color: "#2CCBFF" },
   ];
 
@@ -41,13 +41,9 @@ export default function ProfileStats({ user }: ProfileStatsProps) {
           {stats.map((stat) => (
             <Box key={stat.label}>
               <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
-                <Typography sx={{ color: "#38E06F", fontWeight: 700, letterSpacing: 1 }}>
-                  {stat.label}
-                </Typography>
+                <Typography sx={{ color: "#38E06F", fontWeight: 700, letterSpacing: 1 }}>{stat.label}</Typography>
 
-                <Typography sx={{ color: "#D7D7D7", fontWeight: 700 }}>
-                  {stat.value}
-                </Typography>
+                <Typography sx={{ color: "#D7D7D7", fontWeight: 700 }}>{stat.value}</Typography>
               </Box>
 
               <LinearProgress
@@ -76,9 +72,7 @@ export default function ProfileStats({ user }: ProfileStatsProps) {
           p: 3,
         }}
       >
-        <Typography sx={{ color: "#8FD7FF", fontWeight: 700, mb: 3, letterSpacing: 2 }}>
-          [ HISTORICAL DATA ]
-        </Typography>
+        <Typography sx={{ color: "#8FD7FF", fontWeight: 700, mb: 3, letterSpacing: 2 }}>[ HISTORICAL DATA ]</Typography>
 
         {history.map((item) => (
           <Box

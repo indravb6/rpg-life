@@ -15,9 +15,12 @@ export async function postRequest(endpoint: string, data: any, headers?: any) {
   });
 
   if (!response.ok) {
-    useToast
-      .getState()
-      .showToast("error", `Failed to get from ${endpoint}: ${response.statusText}`);
+    const responseText = await response.json();
+    if (responseText && responseText.message) {
+      useToast.getState().showToast("error", responseText.message);
+    } else {
+      useToast.getState().showToast("error", `Failed to post to ${endpoint}: ${response.statusText}`);
+    }
     throw new Error(`Failed to post to ${endpoint}: ${response.statusText}`);
   }
 

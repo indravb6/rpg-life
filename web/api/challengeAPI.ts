@@ -8,10 +8,7 @@ const challengeAPI = {
   getChallenges: async (categoryTitle: string, cookieHeader?: string): Promise<Challenge[]> => {
     return getRequest(`/challenges?category=${categoryTitle}`, { Cookie: cookieHeader });
   },
-  submitChallenge: async (
-    challengeSubmissionRequest: ChallengeSubmissionRequest,
-    cookieHeader?: string,
-  ) => {
+  submitChallenge: async (challengeSubmissionRequest: ChallengeSubmissionRequest, cookieHeader?: string) => {
     return postRequest("/challenges/submissions", challengeSubmissionRequest, {
       Cookie: cookieHeader,
     });
