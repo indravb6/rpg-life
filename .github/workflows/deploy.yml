@@ -17,25 +17,33 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_CRED }}
           script: |
+            set -e
+
             cd ~/rpg-life
 
             git pull origin main
 
             # Backend
             (
-              cd service
+              set -e
+              cd ~/rpg-life/service
               docker compose up -d --build
             ) &
+            BACKEND_PID=$!
 
             # Frontend
             (
-              cd web
+              set -e
+              cd ~/rpg-life/web
               npm ci
               npm run build
               pm2 reload rpg-life-client || pm2 start npm --name rpg-life-client -- start
               pm2 save
             ) &
+            FRONTEND_PID=$!
 
-            wait
+            # Wait for both deployments
+            wait $BACKEND_PID
+            wait $FRONTEND_PID
 
             echo "Deployment completed successfully."
