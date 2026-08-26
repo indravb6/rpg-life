@@ -23,6 +23,10 @@ jobs:
 
             git pull origin main
 
+            # Load NVM
+            export NVM_DIR="$HOME/.nvm"
+            source "$NVM_DIR/nvm.sh"
+
             # Backend
             (
               set -e
